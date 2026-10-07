@@ -1,0 +1,157 @@
+/* Стили уже готовы: используйте классы из комментариев в компонентах */
+
+:root {
+  --bg: #f6f4f1;
+  --surface: #ffffff;
+  --text: #1c1917;
+  --muted: #57534e;
+  --accent: #e11d48;
+  --on-accent: #ffffff;
+  --border: #e7e5e4;
+  --radius: 14px;
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ★ Тёмная тема: достаточно поставить data-theme="dark" на <html> */
+:root[data-theme='dark'] {
+  --bg: #1c1917;
+  --surface: #292524;
+  --text: #f5f5f4;
+  --muted: #a8a29e;
+  --accent: #fb7185;
+  --on-accent: #1c1917;
+  --border: #44403c;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px 16px 8px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar select,
+.toolbar button {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #0c0a09;
+  color: #d6d3d1; /* подпись alt, если картинка не загрузилась */
+}
+
+.card__body {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 14px;
+}
+
+.card__title {
+  margin: 0;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.like {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.like[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.like:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Состояния ленты: загрузка, пусто, ошибка */
+.status {
+  padding: 48px 16px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.status button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  cursor: pointer;
+}
