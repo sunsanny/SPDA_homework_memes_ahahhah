@@ -5,7 +5,16 @@
 // Как карточка устроена и какие у неё классы — смотрите в макете: spda.voisvet.space/design → DevTools → Elements.
 // Стили уже готовы: совпадут классы — карточка сразу будет выглядеть как в макете.
 // У картинки обязателен alt.
+import LikeButton from './LikeButton.jsx';
 
-export default function MemeCard(props) {
-  return <p>TODO: карточка мема «{props.title}»</p>;
+export default function MemeCard({ id, title, image, likes, liked = false }) {
+  return (
+    <article className="card">
+      <img className="card__image" src={image} alt={title} loading="lazy" />
+      <div className="card__body">
+        <p className="card__title">{title}</p>
+        <LikeButton id={id} initialLikes={likes} initialLiked={liked} />
+      </div>
+    </article>
+  );
 }
